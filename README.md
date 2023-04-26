@@ -1,6 +1,7 @@
 
 > 使用 pygame 实现的 Flap Bird
 
+![截图](play_demo/demo_1.png)
 
 #### 如何运行
 下载源码：
