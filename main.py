@@ -67,7 +67,6 @@ def main_gameplay():
     """
         游戏运行逻辑
     """
-    score = 0
 
     player_posi_x = int(scr_width / 5)
     player_posi_y = int(scr_height / 5)
@@ -108,6 +107,18 @@ def main_gameplay():
 
         if collid_test:
             return
+
+        """"
+            判断和更新分数
+        """
+
+        player_middle_position = bird.get_position_x() + game_image['player'].get_width() / 2
+        for pipe in up_pipe:
+            pipe_middle_position = pipe['x'] + game_image['pipe'][0].get_width() / 2
+            if pipe_middle_position <= player_middle_position < pipe_middle_position + 4:
+                bird.inc_score(1)
+                game_audio_sound['point'].play()
+
         player_var_y = bird.flap(player_is_flap)
 
         if player_is_flap:
@@ -139,6 +150,20 @@ def main_gameplay():
         display_screen_window.blit(game_image['base'], (0, play_ground))
         display_screen_window.blit(game_image['player'],
                                    (bird.get_position_x(), bird.get_position_y()))
+
+        """
+            显示游戏分数
+        """
+        score_digit = [int(x) for x in list(str(bird.get_score()))]
+        digit_width = 0
+        for digit in score_digit:
+            digit_width += game_image['numbers'][digit].get_width()
+        digit_x_offset = (scr_width - digit_width) / 2
+
+        for digit in score_digit:
+            display_screen_window.blit(game_image['numbers'][digit],
+                                       (digit_x_offset, scr_height * 0.12))
+            digit_x_offset += game_image['numbers'][digit].get_width()
 
         """
             更新游戏界面
