@@ -1,18 +1,18 @@
 
-> 使用 pygame 实现的 Flap Bird
+> Flay Bird Using Python
 
-![截图](play_demo/demo_1.png)
+![res](play_demo/demo_1.png)
 
-#### 如何运行
-下载源码：
+#### How 
+Clone The Code：
 ```bash
-git clone 
+git clone https://github.com/Codeory/py_flap_bird
 ```
-安装依赖
+Install Dependenci
 ```bash
 pip install -r requirement.txt
 ```
-然后运行
+Run
 ```bash
 python main.py
 ```
